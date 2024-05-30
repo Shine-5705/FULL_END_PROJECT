@@ -12,6 +12,9 @@ def get_requirements(file_path:str)->List[str]:
             requirements.remove(HYPEN_E_DOT)
 
     return requirements
+
+
+# create the Full end project
 setup(
 name='FULL_END_PROJECT',
 version = '0.01',
