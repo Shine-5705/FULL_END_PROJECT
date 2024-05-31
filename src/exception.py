@@ -3,7 +3,7 @@
 
 import sys
 #This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
-
+from src.logger import logging
 
 #whenever an exception is raised it will message in the terminal
 def error_message_detail(error,error_detail:sys):
