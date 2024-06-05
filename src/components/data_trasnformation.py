@@ -73,16 +73,17 @@ class Datatransformation:
             target_column_name = "math_score"
             numerical_column = ["writing_score","reading_score"]
 
-            input_feature_train_df = train_df.drop(columns=[target_column_name])
+            input_feature_train_df = train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df = train_df[target_column_name]
 
-            input_feature_test_df= test_df.drop(columns=[target_column_name])
+            input_feature_test_df= test_df.drop(columns=[target_column_name],axis=1)
             target_feature_test_df = test_df[target_column_name]
 
-            logging.info(f"Applyinf preprocessor on training and test dataframe")
+            logging.info(f"Applying preprocessor on training and test dataframe")
 
+            
             input_feature_train_arr = preprocessor_object.fit_transform(input_feature_train_df)
-            input_feature_test_arr = preprocessor_object.fit(input_feature_test_df)
+            input_feature_test_arr = preprocessor_object.transform(input_feature_test_df)
 
             train_arr = np.c_[input_feature_train_arr , np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr , np.array(target_feature_test_df)]
@@ -103,4 +104,5 @@ class Datatransformation:
             )
         except Exception as e:
             raise CUstomException(e,sys)
+        
 
